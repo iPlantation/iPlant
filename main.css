@@ -1,0 +1,185 @@
+*{
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    text-decoration: none;
+    font-family: 'Fredoka', sans-serif;
+}
+
+:root{
+    --black: #222831;
+    --lightblack: #393E46;
+    --primary-color: #00ADB5;
+    --white: #EEEEEE;
+}
+
+.app{
+    background-color: var(--white);
+    display: flex;
+    flex-direction: column;
+    min-height: 100vh;
+}
+
+.nav{
+    width: 100%;
+    display: flex;
+    justify-content: space-between;
+    background-color: var(--black);
+    color: white;
+    padding: 1rem;
+}
+.nav h1{
+    font-variant: small-caps;
+}
+.nav button{
+    border: none;
+    outline: none;
+    background: none;
+}
+.nav button svg{
+    fill: var(--white);
+    height: 20px;
+}
+
+.my-plant{
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    padding: 1rem;
+}
+.my-plant .plant{
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+.my-plant .plant svg:first-child{
+    fill: var(--black);
+    width: 80%;
+}
+.my-plant .plant .name{
+    display: flex;
+}
+.my-plant .plant .name *{
+    margin: 0 5px;
+}
+.violet{    width: 20px;
+    height: 20px;
+background-color:midnightblue;}
+.rouge{    width: 20px;
+    height: 20px;
+background-color: darkred;}
+
+.row{
+    width: 100%;
+    display: flex;
+    margin-top: 5rem;
+}
+.row .col{flex:1;display:flex;flex-direction: column;align-items: center;justify-content: center;}
+.row .col p.title{
+    font-size: 1.5rem;
+}
+.row .col svg{
+    height: 5rem;
+    margin: 1rem 0;
+    fill: var(--lightblack);
+}
+.row .col p.number{
+    font-size: 2rem;
+}
+.row .col p.number span.unit{
+    font-size: .9rem;
+}
+
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+  }
+  
+  /* Modal Content */
+  .modal-content {
+    position: relative;
+    background-color: #fefefe;
+    margin: auto;
+    border: 1px solid #888;
+    width: 90%;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19);
+    -webkit-animation-name: animatetop;
+    -webkit-animation-duration: 0.4s;
+    animation-name: animatetop;
+    animation-duration: 0.4s;
+    padding:1rem;
+    display: flex;
+    flex-direction: column;
+}
+  
+  /* Add Animation */
+  @-webkit-keyframes animatetop {
+    from {top:-300px; opacity:0} 
+    to {top:0; opacity:1}
+  }
+  
+  @keyframes animatetop {
+    from {top:-300px; opacity:0}
+    to {top:0; opacity:1}
+  }
+  
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}
+.modal form{
+    display: flex;
+    flex-direction: column;
+}
+.modal form input{
+    width: 100%;
+    padding: 1rem;
+    border: none;
+    outline: none;
+    background-color: var(--white);
+    margin-top: .5rem;
+    margin-bottom: 1.5rem;
+}
+.uv .colors{
+    display: grid;
+    grid-template-columns: 1rem 1fr;
+}
+.uv .b{margin-bottom: 1rem;}
+.uv .colors p{
+    margin-left: 10px;
+}
+.b{font-weight: bold;font-variant: small-caps;}
+form button{
+    width: 100%;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    background: var(--lightblack);
+    color:var(--white);
+    transition: 250ms background, 250ms color;
+    padding: 1rem;
+}
+form button:hover{
+    background: var(--black);
+    color:white;
+}

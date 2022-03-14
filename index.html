@@ -1,0 +1,211 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="main.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;600&display=swap" rel="stylesheet"> 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js"></script>
+
+</head>
+<body>
+    <button id="proutgnole">Proute</button>
+    <div class="app">
+        <div id="myModal" class="modal">
+            <div class="modal-content">
+              <span class="close">&times;</span>
+              <form id="form" action="">
+                    <p class="b">Nom de votre plante</p>
+                    <input type="text" name="plantName">
+                    <p class="b">Humidité minimum (%)</p>
+                    <input type="number" id="minHumidity" name="minHumidity">
+                    
+                    <div style="display:flex;">
+                        <input id="activeLightning" value="Chips" style="width: auto;" type="checkbox"> 
+                        <p class="b" style="flex:1;margin-left: 10px;">Activer l'éclairage UV / UR</p>
+                    </div>
+                    <div class="uv">
+                        <p class="b">Couleur de l'éclairage</p>
+                        <div class="colors">
+                            <input type="radio" name="color" value="Rouge">
+                            <p>Rouge</p>
+                            <input type="radio" name="color" value="Violet">
+                            <p>Violet</p>
+                        </div>
+                        <p class="b">Heure de démarage</p>
+                        <input type="time" name="hour" id="">
+                        <p class="b">Temps d'éclairage (h)</p>
+                        <input type="number" name="time" id="">
+                        <p>L'éclairage débutera tout les jours à <span>15h</span> et finira à <span>18h</span></p>
+                    </div>
+                    <button>Enregistrer</button>
+              </form>
+            </div>
+        </div>
+          
+        <div class="nav">
+            <h1>iPlant</h1>
+            <button id="myBtn"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M495.9 166.6C499.2 175.2 496.4 184.9 489.6 191.2L446.3 230.6C447.4 238.9 448 247.4 448 256C448 264.6 447.4 273.1 446.3 281.4L489.6 320.8C496.4 327.1 499.2 336.8 495.9 345.4C491.5 357.3 486.2 368.8 480.2 379.7L475.5 387.8C468.9 398.8 461.5 409.2 453.4 419.1C447.4 426.2 437.7 428.7 428.9 425.9L373.2 408.1C359.8 418.4 344.1 427 329.2 433.6L316.7 490.7C314.7 499.7 307.7 506.1 298.5 508.5C284.7 510.8 270.5 512 255.1 512C241.5 512 227.3 510.8 213.5 508.5C204.3 506.1 197.3 499.7 195.3 490.7L182.8 433.6C167 427 152.2 418.4 138.8 408.1L83.14 425.9C74.3 428.7 64.55 426.2 58.63 419.1C50.52 409.2 43.12 398.8 36.52 387.8L31.84 379.7C25.77 368.8 20.49 357.3 16.06 345.4C12.82 336.8 15.55 327.1 22.41 320.8L65.67 281.4C64.57 273.1 64 264.6 64 256C64 247.4 64.57 238.9 65.67 230.6L22.41 191.2C15.55 184.9 12.82 175.3 16.06 166.6C20.49 154.7 25.78 143.2 31.84 132.3L36.51 124.2C43.12 113.2 50.52 102.8 58.63 92.95C64.55 85.8 74.3 83.32 83.14 86.14L138.8 103.9C152.2 93.56 167 84.96 182.8 78.43L195.3 21.33C197.3 12.25 204.3 5.04 213.5 3.51C227.3 1.201 241.5 0 256 0C270.5 0 284.7 1.201 298.5 3.51C307.7 5.04 314.7 12.25 316.7 21.33L329.2 78.43C344.1 84.96 359.8 93.56 373.2 103.9L428.9 86.14C437.7 83.32 447.4 85.8 453.4 92.95C461.5 102.8 468.9 113.2 475.5 124.2L480.2 132.3C486.2 143.2 491.5 154.7 495.9 166.6V166.6zM256 336C300.2 336 336 300.2 336 255.1C336 211.8 300.2 175.1 256 175.1C211.8 175.1 176 211.8 176 255.1C176 300.2 211.8 336 256 336z"/></svg></button>
+        </div>
+        <div class="my-plant">
+            <div class="plant">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M64 95.1H0c0 123.8 100.3 224 224 224v128C224 465.6 238.4 480 255.1 480S288 465.6 288 448V320C288 196.3 187.7 95.1 64 95.1zM448 32c-84.25 0-157.4 46.5-195.8 115.3c27.75 30.12 48.25 66.88 59 107.5C424 243.1 512 147.9 512 32H448z"/></svg>
+                <div class="name">
+                    <b id="plantNameText"></b>
+                    <p id="minHumidityText"></p>
+                    <div id="colorInfo" class=""></div>
+                </div>
+
+                <div class="row">
+                    <div class="col">
+                        <p class="title">Humidité actuel</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 384 512"><!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M16 319.1C16 245.9 118.3 89.43 166.9 19.3C179.2 1.585 204.8 1.585 217.1 19.3C265.7 89.43 368 245.9 368 319.1C368 417.2 289.2 496 192 496C94.8 496 16 417.2 16 319.1zM112 319.1C112 311.2 104.8 303.1 96 303.1C87.16 303.1 80 311.2 80 319.1C80 381.9 130.1 432 192 432C200.8 432 208 424.8 208 416C208 407.2 200.8 400 192 400C147.8 400 112 364.2 112 319.1z"/></svg>
+                        <p class="number" id="humidityText"></span></p>
+                    </div>
+                    <div class="col">
+                        <p class="title">Dernier arrosage</p>
+                        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Pro 6.0.0 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license (Commercial License) Copyright 2022 Fonticons, Inc. --><path d="M480 256c0 123.4-100.5 223.9-223.9 223.9c-48.86 0-95.19-15.58-134.2-44.86c-14.14-10.59-17-30.66-6.391-44.81c10.61-14.09 30.69-16.97 44.8-6.375c27.84 20.91 61 31.94 95.89 31.94C344.3 415.8 416 344.1 416 256s-71.67-159.8-159.8-159.8C205.9 96.22 158.6 120.3 128.6 160H192c17.67 0 32 14.31 32 32S209.7 224 192 224H48c-17.67 0-32-14.31-32-32V48c0-17.69 14.33-32 32-32s32 14.31 32 32v70.23C122.1 64.58 186.1 32.11 256.1 32.11C379.5 32.11 480 132.6 480 256z"/></svg>                        
+                        <p class="number" id="lastWatering"></p>
+                    </div>
+                </div>
+            </div>
+            <canvas id="myChart" style="width:100%;"></canvas>
+
+
+        </div>
+    </div>
+    <script src="node_modules/socket.io/client-dist/socket.io.js"></script>
+
+</body>
+</html>
+
+<script>
+  var socket = io();
+
+  var form = document.getElementById('form');
+  var input = document.getElementsByTagName("input");
+
+  form.addEventListener('submit', function(e) {
+    e.preventDefault();
+    var color = ""
+    const radioButtons = document.querySelectorAll('input[name="color"]');
+        for(const radioButton of radioButtons) {
+            if (radioButton.checked) {
+                color = radioButton.value;
+                break;
+            }
+        }
+    
+        var data = {
+            plantName:input[0].value,
+            minHumidity:input[1].value,
+            isLightning:input[2].value,
+            lightColor:color,
+            startLight:input[5].value,
+            timeLight:input[6].value
+        }
+        socket.emit('postClient', data);
+        modal.style.display = "none";
+
+      
+  });
+
+  var plantNameText = document.getElementById('plantNameText');
+  var minHumidityText = document.getElementById('minHumidityText');
+  var colorInfo = document.getElementById('colorInfo');
+
+  socket.emit('GetInfo', 'a');
+  socket.on('getServer', function(data) {
+        console.log(data)
+        plantNameText.innerHTML = data.plantName
+        if(data.isLightning == 'true'){
+            minHumidityText.innerHTML = "- " + data.minHumidity +"% -"
+            colorInfo.className = data.lightColor.toLowerCase();
+        }else{
+            minHumidityText.innerHTML = "- " + data.minHumidity +"%"
+        }
+  });
+
+  var lastWatering = document.getElementById('lastWatering');
+  var humidityText = document.getElementById('humidityText');
+
+  socket.on('UpdateInfos', function(data) {
+        humidityText.innerHTML = data.humidity + '<span class="unit">%</span>'
+        lastWatering.innerHTML = data.lastWatering + '<span class="unit">h</span>'
+  });
+
+    var modal = document.getElementById("myModal");
+    var btn = document.getElementById("myBtn");
+    var span = document.getElementsByClassName("close")[0];
+    var uv = document.getElementsByClassName("uv")[0];
+    
+    btn.onclick = function() {
+      modal.style.display = "block";
+    }
+    
+    span.onclick = function() {
+      modal.style.display = "none";
+    }
+    
+    window.onclick = function(event) {
+      if (event.target == modal) {
+        modal.style.display = "none";
+      }
+    }
+
+function light(el){
+    if(el.checked) {
+        uv.style.display = "block";
+        el.value="true"
+    } else {
+        uv.style.display = "none";
+        el.value="false"
+    }
+}
+light(document.getElementById('activeLightning'));
+document.getElementById('activeLightning').onclick = function() {
+    light(this);
+};
+
+
+
+document.getElementById('proutgnole').onclick = function() {
+    socket.emit('HourUpdate', 30);
+};
+
+
+
+socket.on('updateCharts', function(data) {
+    UpdateCharts(data.hour, data.hourHumidities)
+});
+
+function UpdateCharts(xValues, yValues){
+    new Chart("myChart", {
+        type: "line",
+        data: {
+            labels: xValues,
+            datasets: [{
+            fill: true,
+            lineTension: .1,
+            backgroundColor: "rgba(34, 40, 49, .5)",
+            borderColor: "rgba(34, 40, 49, 1)",
+            data: yValues
+            }]
+        },
+        options: {
+            legend: {display: false},
+            scales: {
+            yAxes: [{ticks: {min: 0, max:100}}],
+            }
+        }
+        });
+
+}
+
+
+
+</script>
