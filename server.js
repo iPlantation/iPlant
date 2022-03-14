@@ -14,8 +14,9 @@ var hourHumidities = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 app.use(express.static(path.join(__dirname, '')));
 
 app.get('/', (req, res) => {
-  res.sendFile(__dirname + '/index.html')
-  io.emit('getServer', value)
+  //res.sendFile(__dirname + '/index.html')
+  //io.emit('getServer', value)
+  res.send('Hello World')
 });
 
 app.get('/arduino', (req, res) => {
